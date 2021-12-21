@@ -8,3 +8,5 @@ build/
 
 application-oauth.properties
 application.properties
+
+.class
