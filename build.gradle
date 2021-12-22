@@ -40,6 +40,8 @@ dependencies {
     // 메모리에서 실행되기 때문에 애플리케이션을 재시작할 때 마다 초기화 됨 = test 용도
     compile('com.h2database:h2')
 
+    //세션 저장소를 DB로 설정하기 위해 등록
+    compile('org.springframework.session:spring-session-jdbc')
 
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
