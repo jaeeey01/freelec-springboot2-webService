@@ -15,6 +15,12 @@
                 {{^userName}}<!--해당값이 존재하지 않을 경우  "^"-->
                     <!--spring security에서 기본 제공하는 구글 로그인 URL = 컨트롤러 만들 필요 X-->
                     <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+
+                    <!--네이버 로그인 URL은 redirect-uri값에 맞춰 자동으로 등록됨
+                        /oauth2/authorization/ 까지는 고정이고 마지막 Path만 각 소셜로그인 코드 사용  = naver
+                    -->
+                    <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+
                 {{/userName}}
                 </div>
         </div>

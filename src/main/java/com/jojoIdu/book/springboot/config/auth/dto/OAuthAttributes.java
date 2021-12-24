@@ -26,6 +26,11 @@ public class OAuthAttributes {
     }
     //OAuth2User에서 반환하는 사용자 정보는 Map이기 때문에 값하나하나를 반환해야함
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes){
+
+        if("naver".equals(registrationId)){
+            return ofNaver("id",attributes);
+        }
+
         return ofGoogle(userNameAttributeName,attributes);
     }
 
@@ -38,6 +43,19 @@ public class OAuthAttributes {
                                 .nameAttributeKey(userNameAttributeName)
                                 .build();
     }
+
+    private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String,Object> attributes){
+        Map<String, Object> response = (Map<String, Object>) attributes.get("response");
+
+        return OAuthAttributes.builder()
+                .name((String) response.get("name"))
+                .email((String) response.get("email"))
+                .picture((String) response.get("profile_image"))
+                .attributes(response)
+                .nameAttributeKey(userNameAttributeName)
+                .build();
+    }
+
     //userEntity 생성
     //OAuthAttributes에서 entity 생성 시점은 첫 가입시
     //가입시 기본 권한을 GUEST를 주기 위햇 Role 빌더값 GUEST
