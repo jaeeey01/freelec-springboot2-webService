@@ -45,8 +45,11 @@ dependencies {
 
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    //spring security test
+    testCompile("org.springframework.security:spring-security-test")
     }
 
+/*
 test {
     useJUnitPlatform()
-}
+}*/
